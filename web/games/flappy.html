@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird - Eyebrow Control</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection@1.0.5"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="game-header">
+            <a href="../index.html" class="back-btn">&#x2190; Back</a>
+            <h1 class="game-title">Flappy Bird</h1>
+            <div class="score-display">Score: <span id="score">0</span></div>
+        </div>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Loading face detection model...</p>
+        </div>
+
+        <div id="gameArea" style="display: none;">
+            <div class="status-bar">
+                <span id="status" class="status-text">Calibrating... Look at camera with neutral face</span>
+            </div>
+
+            <div class="game-container">
+                <div class="video-container">
+                    <video id="webcam" width="640" height="480" autoplay muted playsinline></video>
+                    <canvas id="overlay" width="640" height="480"></canvas>
+                </div>
+
+                <div class="game-canvas-container">
+                    <canvas id="gameCanvas" width="288" height="512"></canvas>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <h4>Controls</h4>
+                <ul>
+                    <li>Raise your eyebrows to make the bird flap</li>
+                    <li>Press SPACE as backup control</li>
+                    <li>Avoid the pipes!</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p class="creator">Created by Alonso Bardales</p>
+        </footer>
+    </div>
+
+    <script src="../js/faceDetector.js"></script>
+    <script src="../js/flappyGame.js"></script>
+</body>
+</html>

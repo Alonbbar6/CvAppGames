@@ -1,0 +1,348 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #00d4ff, #7b2cbf, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #a0a0a0;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.game-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    border-color: #00d4ff;
+    box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+}
+
+.game-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.game-card h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #00d4ff;
+}
+
+.game-description {
+    color: #b0b0b0;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.control-tag {
+    background: rgba(123, 44, 191, 0.3);
+    border: 1px solid #7b2cbf;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    color: #d4a5ff;
+}
+
+.play-btn {
+    background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.play-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+}
+
+.info-section {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.info-section h3 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #00d4ff;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.info-item {
+    text-align: center;
+}
+
+.info-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.info-item h4 {
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.info-item p {
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.privacy {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #4a9;
+}
+
+.creator {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #00d4ff;
+    font-weight: 600;
+}
+
+/* Game Page Styles */
+.game-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.video-container {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    max-width: 640px;
+    transform: scaleX(-1);
+}
+
+/* Video is in normal flow to give container height */
+#webcam {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Canvas overlays on top of video */
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.game-canvas-container {
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid rgba(123, 44, 191, 0.3);
+}
+
+#gameCanvas {
+    display: block;
+    background: #1a1a2e;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.back-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.game-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+    color: #00d4ff;
+}
+
+.score-display {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    color: #7b2cbf;
+}
+
+.status-bar {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.status-text {
+    font-size: 1.1rem;
+    color: #00d4ff;
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    gap: 1rem;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(0, 212, 255, 0.2);
+    border-top-color: #00d4ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.instructions {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 1rem;
+    max-width: 400px;
+}
+
+.instructions h4 {
+    color: #00d4ff;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.instructions ul {
+    list-style: none;
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.instructions li {
+    padding: 0.3rem 0;
+}
+
+.instructions li::before {
+    content: ">";
+    color: #7b2cbf;
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .game-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .video-container, .game-canvas-container {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    #gameCanvas {
+        width: 100%;
+        height: auto;
+    }
+}

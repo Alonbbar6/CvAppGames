@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Control Games</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Face Control Games</h1>
+            <p class="subtitle">Play classic games using your face!</p>
+        </header>
+
+        <div class="games-grid">
+            <!-- Flappy Bird -->
+            <div class="game-card" onclick="location.href='games/flappy.html'">
+                <div class="game-icon">&#x1F426;</div>
+                <h2>Flappy Bird</h2>
+                <p class="game-description">Raise your eyebrows to make the bird flap!</p>
+                <div class="controls">
+                    <span class="control-tag">Eyebrow Control</span>
+                </div>
+                <button class="play-btn">Play Now</button>
+            </div>
+
+            <!-- Tetris -->
+            <div class="game-card" onclick="location.href='games/tetris.html'">
+                <div class="game-icon">&#x1F9E9;</div>
+                <h2>Tetris</h2>
+                <p class="game-description">Move your head left/right, raise eyebrows to rotate!</p>
+                <div class="controls">
+                    <span class="control-tag">Head Movement</span>
+                    <span class="control-tag">Eyebrow Control</span>
+                </div>
+                <button class="play-btn">Play Now</button>
+            </div>
+
+            <!-- Expression Game -->
+            <div class="game-card" onclick="location.href='games/expression.html'">
+                <div class="game-icon">&#x1F60A;</div>
+                <h2>Expression Match</h2>
+                <p class="game-description">Match facial expressions to score points!</p>
+                <div class="controls">
+                    <span class="control-tag">Full Face</span>
+                </div>
+                <button class="play-btn">Play Now</button>
+            </div>
+        </div>
+
+        <section class="info-section">
+            <h3>How It Works</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-icon">&#x1F4F7;</div>
+                    <h4>Camera Access</h4>
+                    <p>Allow camera access when prompted. Your video stays on your device.</p>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">&#x1F9E0;</div>
+                    <h4>AI Detection</h4>
+                    <p>TensorFlow.js detects your face and facial landmarks in real-time.</p>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">&#x1F3AE;</div>
+                    <h4>Play!</h4>
+                    <p>Use facial expressions and head movements to control the games.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Built with TensorFlow.js Face Landmarks Detection</p>
+            <p class="privacy">Your camera feed is processed locally - no data is sent to any server.</p>
+            <p class="creator">Created by Alonso Bardales</p>
+        </footer>
+    </div>
+</body>
+</html>

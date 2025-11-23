@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expression Match - Face Control Game</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection@1.0.5"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="game-header">
+            <a href="../index.html" class="back-btn">&#x2190; Back</a>
+            <h1 class="game-title">Expression Match</h1>
+            <div class="score-display">Score: <span id="score">0</span></div>
+        </div>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Loading face detection model...</p>
+        </div>
+
+        <div id="gameArea" style="display: none;">
+            <div class="status-bar">
+                <span id="status" class="status-text">Calibrating... Look at camera with neutral face</span>
+            </div>
+
+            <div class="game-container">
+                <div class="video-container">
+                    <video id="webcam" width="640" height="480" autoplay muted playsinline></video>
+                    <canvas id="overlay" width="640" height="480"></canvas>
+                    <div id="expressionOverlay" class="expression-overlay"></div>
+                </div>
+
+                <div id="targetPanel" class="target-panel">
+                    <h3>Match This Expression:</h3>
+                    <div id="targetEmoji" class="target-emoji">&#x1F610;</div>
+                    <div id="targetName" class="target-name">NEUTRAL</div>
+                    <div id="timer" class="timer">8.0s</div>
+                    <div id="matchBar" class="match-bar">
+                        <div id="matchProgress" class="match-progress"></div>
+                    </div>
+                    <div id="holdTimer" class="hold-timer" style="display: none;">HOLD: 0.0s</div>
+                </div>
+            </div>
+
+            <div id="roundInfo" class="round-info">
+                Round: <span id="round">1</span>/5
+            </div>
+
+            <div class="instructions">
+                <h4>How to Play</h4>
+                <ul>
+                    <li>Match the target expression shown</li>
+                    <li>Hold the expression for 3 seconds to score</li>
+                    <li>Complete 5 rounds to finish</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p class="creator">Created by Alonso Bardales</p>
+        </footer>
+    </div>
+
+    <style>
+        .expression-overlay {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .target-panel {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(123, 44, 191, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            min-width: 250px;
+        }
+
+        .target-panel h3 {
+            color: #00d4ff;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .target-emoji {
+            font-size: 5rem;
+            margin: 1rem 0;
+        }
+
+        .target-name {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.2rem;
+            color: #7b2cbf;
+            margin-bottom: 1rem;
+        }
+
+        .timer {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2rem;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        .match-bar {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .match-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #f0a000, #00f000);
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        .hold-timer {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            color: #00f000;
+            animation: pulse 0.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .round-info {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #888;
+        }
+    </style>
+
+    <script src="../js/faceDetector.js"></script>
+    <script src="../js/expressionGame.js"></script>
+</body>
+</html>
